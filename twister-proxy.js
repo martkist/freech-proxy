@@ -12,7 +12,7 @@ function handlePortAccessError()
     console.log("Error: Node.js doesn't allow access to ports lower than 1024 in normal user mode.");
     console.log("   Possible solutions:");
     console.log("       1 - Edit settings.json and change \"http_port\": 80 to a higher number. It will then run under any user.");
-    console.log("       2 - If you want to use standard HTTP port, run the server as root: sudo node twister-proxy.js &");
+    console.log("       2 - If you want to use standard HTTP port, run the server as root: sudo node freech-proxy.js &");
     process.exit(1);
 }
 
@@ -109,7 +109,7 @@ app.get("*", function(request, response)
     {
         if(!connectionErrorMessageDisplayed)
         {
-            console.log("Error: cannot connect to twisterd.\nSee Troubleshooting section in README.md for instructions.");
+            console.log("Error: cannot connect to freechd.\nSee Troubleshooting section in README.md for instructions.");
             connectionErrorMessageDisplayed=true;
         }
         response.send(502);
@@ -196,7 +196,7 @@ app.post("/", function(request, response)
             {
                 if(!connectionErrorMessageDisplayed)
                 {
-                    console.log("Error: cannot connect to twisterd.\nSee Troubleshooting section in README.md for instructions.");
+                    console.log("Error: cannot connect to freechd.\nSee Troubleshooting section in README.md for instructions.");
                     connectionErrorMessageDisplayed=true;
                 }
                 response.send(502);

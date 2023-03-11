@@ -1,54 +1,51 @@
-twister-proxy
+freech-proxy
 =============
 
 Version 0.1.1
 
-This is an RPC proxy for running a public server for the Twister P2P microblogging network. Public servers allow anyone to easily read news posted on Twister from the web. If a user wants to become active on the network, he/she is directed to instructions on how to install the app. Twister proxy needs twister-core to be able to access the network.
+This is an RPC proxy for running a public server for the Freech P2P microblogging network. Public servers allow anyone to easily read news posted on Freech from the web. If a user wants to become active on the network, he/she is directed to instructions on how to install the app. Freech proxy needs [freech-core](https://github.com/martkist/freech-core) to be able to access the network.
 
-Twister is in alpha phase, it's still under construction. It is already being used, but it may be unstable, and difficult to compile. This is the project website http://twister.net.co/
-
-Twister is open source, the source code is available here: https://github.com/miguelfreitas/twister-core
 
 ## Running a public server
 
-**1 - install Twister**
+**1 - install Freech**
 
-instructions can be found here: http://twister.net.co/?page_id=23
+instructions can be found here: https://github.com/martkist/freech-core
 
 **2 - install node.js**
 
 it's available for all major platforms from here: http://nodejs.org/
 
-**3 - install twister-proxy**
+**3 - install freech-proxy**
 
 clone it from the repository
 
-> git clone https://github.com/digital-dreamer/twister-proxy.git
+> git clone https://github.com/martkist/freech-proxy.git
   
 install it
 
-> cd twister-proxy
+> cd freech-proxy
 
 > npm install
 
-**4 - run twisterd**
+**4 - run freechd**
 
-go to your twister-core folder and run twisterd with the following options:
+go to your freech-core folder and run freechd with the following options:
 
-> ./twisterd -daemon -rpcallowip=127.0.0.1 -public_server_mode=1
+> ./freechd -daemon -rpcallowip=127.0.0.1 -public_server_mode=1
   
-This will run twister server in background, allow RPC calls, but only from the same computer, and put it in "public server mode", which is designed for this purpose.
+This will run freech server in background, allow RPC calls, but only from the same computer, and put it in "public server mode", which is designed for this purpose.
 
-**5 - run twister-proxy**
+**5 - run freech-proxy**
 
-go to the twister-proxy folder and run
+go to the freech-proxy folder and run
 
-> node twister-proxy.js &
+> node freech-proxy.js &
 
-(If you use ports lower that 1024 you need to use sudo - sudo node twister-proxy.js &)
+(If you use ports lower that 1024 you need to use sudo - sudo node freech-proxy.js &)
 this will launch a public server on default http port 80. If you need to change any settings, you can edit the settings.json file.
   
-If you type your server's URL into a web browser, you should see the twister web application. It is now functional, but if you care about privacy for your users, I highly recommend taking one more step and enabling SSL.
+If you type your server's URL into a web browser, you should see the freech web application. It is now functional, but if you care about privacy for your users, I highly recommend taking one more step and enabling SSL.
 
 ## Enable SSL
 
@@ -74,7 +71,7 @@ This guide shows where to get a certificate cheap or for free:
     
 http://webdesign.about.com/od/ssl/tp/cheapest-ssl-certificates.htm
     
-**4 - enable SSL in twister-proxy**
+**4 - enable SSL in freech-proxy**
 
 Edit the settings.json file
     
@@ -82,14 +79,14 @@ Edit the settings.json file
 * In "ssl_certificate_file", specify a path to the file that you received from your Certificate Authority.
 * Change "enable_https" from false to true.
     
-That's it. If you now run twister-proxy, it will use secure https connections.
+That's it. If you now run freech-proxy, it will use secure https connections.
 
 ## Production
 
-**1 - To keep a log, redirect twister proxy output to a file**
+**1 - To keep a log, redirect freech proxy output to a file**
 
 Example:
-> node twister-proxy.js > output.log &
+> node freech-proxy.js > output.log &
 
 
 **2 - You can use the "forever" module to keep the proxy server running** 
@@ -100,17 +97,17 @@ https://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever/
 
 ## Troubleshooting
 
-### Cannot connect to twisterd
+### Cannot connect to freechd
 
-Twister must be running and accepting RPC calls, run it with these parameters:
+Freech must be running and accepting RPC calls, run it with these parameters:
     
-> ./twisterd -daemon -rpcallowip=127.0.0.1 -public_server_mode=1
+> ./freechd -daemon -rpcallowip=127.0.0.1 -public_server_mode=1
     
-If you changed the RPC port, username or password in twister.conf, you need to change it in settings.json too.
+If you changed the RPC port, username or password in freech.conf, you need to change it in settings.json too.
     
 ### Configuration file settings.json couldn't be parsed
 
 You probably damaged settings.json when editing it. If you can spot what went wrong, you can correct it, if not, download the default settings.json and redo your customization.
 
 
-If you get stuck, and need some help setting up a public Twister server, you can ask in the issue section, even if it is not an actual issue with the code.
+If you get stuck, and need some help setting up a public Freech server, you can ask in the issue section, even if it is not an actual issue with the code.

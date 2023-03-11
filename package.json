@@ -1,6 +1,6 @@
 {
-    "name": "twister-proxy",
-    "description": "RPC proxy for running a public server for the Twister P2P microblogging platform.",
+    "name": "freech-proxy",
+    "description": "RPC proxy for running a public server for the Freech P2P microblogging platform.",
     "version": "0.2.1",
     "author": "digital dreamer <digitaldreamer@email.cz>",
     "dependencies":
@@ -12,7 +12,7 @@
     "repository":
     {
         "type": "git",
-        "url": "https://github.com/digital-dreamer/twister-proxy.git"
+        "url": "https://github.com/martkist/freech-proxy.git"
     },
     "licenses":
     [
