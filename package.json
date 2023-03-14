@@ -2,7 +2,7 @@
     "name": "freech-proxy",
     "description": "RPC proxy for running a public server for the Freech P2P microblogging platform.",
     "version": "0.2.1",
-    "author": "digital dreamer <digitaldreamer@email.cz>",
+    "author": "@martkist",
     "dependencies":
     {
         "express": ">=2.5.x",
