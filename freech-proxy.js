@@ -5,6 +5,10 @@ var express = require("express");
 var console = require("console");
 
 var app = express();
+
+// Disable the 'X-Powered-By: Express' header
+app.disable('x-powered-by');
+
 var cors = require('cors');
 
 function handlePortAccessError() {
