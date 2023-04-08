@@ -145,16 +145,19 @@ app.post("/", function (request, response) {
         catch (e) {
             perIPCounter[remoteIP].invalidRequests++;
             invalidRequestCounter++;
+            response.status(400).send('Invalid request');
             return;
         }
         if (maxCallsPerMinute[rpcMethod] === undefined || maxCallsPerMinute[rpcMethod] === 0) {
             perIPCounter[remoteIP].forbiddenCalls++;
             forbiddenCallCounter++;
+            response.status(403).send('Forbidden RPC method');
             return;
         }
         if (maxCallsPerMinute[rpcMethod] !== null) {
             if (callsRemaining[rpcMethod] < 1) {
                 droppedCallsCounter[rpcMethod]++;
+                response.status(429).send('Rate limit exceeded');
                 return;
             }
             else {
@@ -165,6 +168,7 @@ app.post("/", function (request, response) {
         if (maxCallsPerMinutePerIP[rpcMethod] !== null) {
             if (perIPCounter[remoteIP].callsRemaining[rpcMethod] < 1) {
                 perIPCounter[remoteIP].overLimit++;
+                response.status(429).send('Rate limit exceeded');
                 return;
             }
             else {
@@ -186,7 +190,7 @@ app.post("/", function (request, response) {
                     console.log("Error: cannot connect to freechd.\nSee Troubleshooting section in README.md for instructions.");
                     connectionErrorMessageDisplayed = true;
                 }
-                response.send(502);
+                response.status(502).send("Cannot connect to freechd");
             });
 
             response.writeHead(proxy_res.statusCode, proxy_res.headers);
